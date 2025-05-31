@@ -15,7 +15,7 @@
     <meta property="og:url" content="https://metodoauditoria.com.br/" />
     <meta property="og:title" content="Método Auditoria - Especialista em Auditoria Hospitalar no Brasil" />
     <meta property="og:description" content="A Método Auditoria é líder em auditoria hospitalar e de contas no Brasil. Mais de 10 anos de experiência transformando gestão hospitalar." />
-    <meta property="og:image" content="https://metodoauditoria.com.br/og-image.jpg" />
+    <meta property="og:image" content="/logo.png" /> <!-- Changed to local logo -->
     <meta property="og:site_name" content="Método Auditoria" />
     <meta property="og:locale" content="pt_BR" />
 
@@ -24,7 +24,7 @@
     <meta property="twitter:url" content="https://metodoauditoria.com.br/" />
     <meta property="twitter:title" content="Método Auditoria - Especialista em Auditoria Hospitalar no Brasil" />
     <meta property="twitter:description" content="A Método Auditoria é líder em auditoria hospitalar e de contas no Brasil. Mais de 10 anos de experiência transformando gestão hospitalar." />
-    <meta property="twitter:image" content="https://metodoauditoria.com.br/og-image.jpg" />
+    <meta property="twitter:image" content="/logo.png" /> <!-- Changed to local logo -->
 
     <!-- Structured Data for Local Business -->
     <script type="application/ld+json">
@@ -34,7 +34,7 @@
       "name": "Método Auditoria e Consultoria",
       "description": "Especialista em auditoria hospitalar e de contas no Brasil",
       "url": "https://metodoauditoria.com.br",
-      "telephone": "+55-13-96613-6266",
+      "telephone": "+55-11-992830070",
       "address": {
         "@type": "PostalAddress",
         "addressRegion": "SP",
@@ -42,7 +42,7 @@
         "addressCountry": "BR"
       },
       "sameAs": [
-        "https://wa.me/5513966136266"
+        "https://wa.me/5511992830070"
       ],
       "serviceType": "Auditoria Hospitalar",
       "areaServed": "Brasil"
@@ -145,7 +145,8 @@
         <div class="relative z-10 text-center max-w-6xl mx-auto px-4">
             <!-- Logo -->
             <div class="mb-8">
-                <img src="logo.png" alt="Método Auditoria Logo" class="w-40 h-auto mx-auto mb-8" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <!-- Use local logo -->
+                <img src="/logo.png" alt="Método Auditoria Logo" class="w-40 h-auto mx-auto mb-8" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                 <div class="w-32 h-20 mx-auto mb-8 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center" style="display: none;">
                     <span class="text-2xl font-bold text-blue-400">MÉTODO</span>
                 </div>
@@ -417,7 +418,7 @@
                 <div class="glass-effect rounded-2xl p-8 text-center">
                     <i data-lucide="phone" class="w-12 h-12 text-green-400 mx-auto mb-4"></i>
                     <h3 class="text-xl font-semibold mb-2">Telefone</h3>
-                    <p class="text-gray-300">(13) 9 6613-6266</p>
+                    <p class="text-gray-300">(11) 992830070</p>
                 </div>
                 
                 <div class="glass-effect rounded-2xl p-8 text-center">
@@ -455,7 +456,7 @@
         <div class="glass-effect rounded-2xl p-8 max-w-md w-full">
             <h3 id="modalTitle" class="text-2xl font-bold mb-6 text-center"></h3>
             
-            <form id="modalForm" class="space-y-4">
+            <form id="modalForm" action="javascript:void(0);" class="space-y-4">
                 <input type="text" id="modalName" placeholder="Nome" class="w-full p-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                 <input type="tel" id="modalWhatsapp" placeholder="WhatsApp (DDD+número)" class="w-full p-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                 <input type="email" id="modalEmail" placeholder="Email" class="w-full p-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
@@ -478,8 +479,9 @@
 
         // Chat variables
         let chatStep = 0;
-        let chatData = { name: '', need: '', whatsapp: '' };
+        let chatData = { name: '', need: '', whatsapp: '' }; // Added whatsapp field for potential future use
         let currentModalType = '';
+        const ownerWhatsAppNumber = '5513966136266'; // Owner number for user redirection
 
         // Initialize chat
         function initChat() {
@@ -535,7 +537,7 @@
                     addBotMessage(`Obrigado pelo contato, ${chatData.name}! 📋`);
                     setTimeout(() => {
                         addBotMessage("Estou passando o atendimento para um de nossos especialistas do time. Você será redirecionado para o WhatsApp agora! 🚀");
-                        finishChat();
+                        finishChat(); // Call async function
                     }, 1000);
                 }, 500);
             }
@@ -550,6 +552,8 @@
             
             const options = ['Auditoria de Contas', 'Auditoria Hospitalar', 'Consultoria'];
             
+            optionButtons.innerHTML = ''; // Clear previous buttons if any
+
             options.forEach(option => {
                 const button = document.createElement('button');
                 button.className = 'w-full bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-lg transition-colors';
@@ -559,7 +563,7 @@
             });
 
             const customButton = document.createElement('button');
-            customButton.className = 'w-full bg-gray-600 hover:bg-gray-700 text-white p-3 rounded-lg transition-colors';
+            customButton.className = 'w-full bg-gray-600 hover:bg-gray-700 text-white p-3 rounded-lg transition-colors mt-2'; // Added margin-top
             customButton.textContent = 'Escrever minha necessidade';
             customButton.onclick = () => {
                 optionButtons.style.display = 'none';
@@ -580,28 +584,28 @@
                 addBotMessage(`Obrigado pelo contato, ${chatData.name}! 📋`);
                 setTimeout(() => {
                     addBotMessage("Estou passando o atendimento para um de nossos especialistas do time. Você será redirecionado para o WhatsApp agora! 🚀");
-                    finishChat();
+                    finishChat(); // Call async function
                 }, 1000);
             }, 500);
         }
 
-        function finishChat() {
-            // Save lead data
+        async function finishChat() { // Made async
+            // Prepare lead data
             const leadData = {
                 name: chatData.name,
                 need: chatData.need,
-                type: 'chatbot',
-                timestamp: new Date().toISOString(),
-                conversation: Array.from(document.querySelectorAll('#chatMessages > div')).map(el => el.textContent)
+                type: 'chatbot', // Indicate source
+                // Timestamp added by backend
             };
             
-            saveLeadData(leadData);
+            // Send data to backend (awaiting is good practice)
+            await saveLeadData(leadData);
             
-            // Redirect to WhatsApp
+            // Redirect user to WhatsApp to contact the owner
             setTimeout(() => {
-                const whatsappMessage = `Olá! Meu nome é ${chatData.name}. ${chatData.need}. Vim através do site da Método Auditoria.`;
-                window.open(`https://wa.me/5513996136266?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
-            }, 2000);
+                const whatsappMessage = `Olá! Meu nome é ${chatData.name}. Meu interesse é: ${chatData.need}. Vim através do site da Método Auditoria.`;
+                window.open(`https://wa.me/${ownerWhatsAppNumber}?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
+            }, 500); // Reduced delay slightly
         }
 
         // Handle Enter key in chat input
@@ -632,44 +636,67 @@
         function closeModal() {
             document.getElementById('modal').style.display = 'none';
             document.getElementById('modalForm').reset();
+            // Reset button state if needed
+            const submitBtn = document.getElementById('modalSubmitBtn');
+            submitBtn.disabled = false;
+            const originalText = currentModalType === 'ebook' ? 'Receber eBook' : 'Receber Apresentação';
+            submitBtn.textContent = originalText;
         }
 
         // Handle modal form submission
-        document.getElementById('modalForm').addEventListener('submit', function(e) {
+        document.getElementById('modalForm').addEventListener('submit', async function(e) { // Made async
             e.preventDefault();
             
             const leadData = {
                 name: document.getElementById('modalName').value,
                 whatsapp: document.getElementById('modalWhatsapp').value,
                 email: document.getElementById('modalEmail').value,
-                type: currentModalType,
-                timestamp: new Date().toISOString()
+                type: currentModalType, // Keep track of 'ebook' or 'apresentacao'
+                // Timestamp will be added by the backend
             };
             
-            saveLeadData(leadData);
-            
-            // Simulate file download
-            const fileName = currentModalType === 'ebook' ? 'metodo-ebook.pdf' : 'apresentacao-metodo.pdf';
-            alert(`Obrigado! O arquivo ${fileName} será baixado em breve.`);
+            // Disable button to prevent multiple submissions
+            const submitBtn = document.getElementById('modalSubmitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Enviando...';
+
+            await saveLeadData(leadData); // Call the updated async function
+
+            // Re-enable button and reset text (handled in closeModal now)
+            // submitBtn.disabled = false; 
+            // const originalText = currentModalType === 'ebook' ? 'Receber eBook' : 'Receber Apresentação';
+            // submitBtn.textContent = originalText;
+
+            // Show a confirmation message instead of download alert
+            alert('Obrigado pelo seu contato! Seus dados foram enviados.'); // Changed message
             
             closeModal();
         });
 
-        // Save lead data function
-        function saveLeadData(leadData) {
-            let existingLeads = JSON.parse(localStorage.getItem('leads') || '[]');
-            existingLeads.push(leadData);
-            localStorage.setItem('leads', JSON.stringify(existingLeads));
-            
-            // Download JSON file
-            const dataStr = JSON.stringify(existingLeads, null, 2);
-            const dataBlob = new Blob([dataStr], { type: 'application/json' });
-            const url = URL.createObjectURL(dataBlob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = 'leads.json';
-            link.click();
-            URL.revokeObjectURL(url);
+        // Save lead data function (MODIFIED)
+        async function saveLeadData(leadData) {
+            try {                 const response = await fetch("/submit_lead", { // Send request to the backend endpoint            method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(leadData), // Send data as JSON
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    console.log('Lead data sent successfully to backend.');
+                    // Optional: Show success feedback if needed, beyond the alert in the calling function
+                } else {
+                    console.error('Failed to send lead data:', result.error || response.statusText);
+                    // Optional: Inform the user about the error.
+                    alert('Ocorreu um erro ao enviar seus dados. Por favor, tente novamente ou entre em contato diretamente.');
+                }
+            } catch (error) {
+                console.error('Error sending lead data via fetch:', error);
+                // Optional: Inform the user about the network error.
+                alert('Ocorreu um erro de conexão ao enviar seus dados. Verifique sua internet e tente novamente.');
+            }
         }
 
         // Utility functions
@@ -681,7 +708,8 @@
         }
 
         function openWhatsApp() {
-            window.open('https://wa.me/5513996136266?text=Olá! Gostaria de saber mais sobre os serviços da Método Auditoria.', '_blank');
+             // Directs user to contact the owner via WhatsApp
+            window.open(`https://wa.me/${ownerWhatsAppNumber}?text=Olá! Gostaria de saber mais sobre os serviços da Método Auditoria.`, '_blank');
         }
 
         // Initialize the page
@@ -692,3 +720,4 @@
     </script>
 </body>
 </html>
+
